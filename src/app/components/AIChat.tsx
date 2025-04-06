@@ -120,7 +120,7 @@ const AIChat: React.FC<{
         // but we add it here in case the event doesn't fire for some reason)
         setMessages((prev) => [
           ...prev,
-          { id: Date.now(), content: aiResponse, sender: 'ai' as const },
+          { id: Date.now(), content: typeof aiResponse === 'string' ? aiResponse : 'Operation completed', sender: 'ai' as const },
         ]);
       } catch (error) {
         console.error('Error chatting with document:', error);
