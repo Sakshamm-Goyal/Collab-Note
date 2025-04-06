@@ -1,0 +1,117 @@
+/* /app/css/editor-custom.css */
+.bn-container {
+  border-left: 2px solid var(--border-color);
+}
+
+.bn-editor [data-slate-placeholder] {
+  color: var(--placeholder-color) !important;
+}
+
+.bn-editor [data-slate-cursor] {
+  border-color: currentColor !important;
+}
+
+.bn-menu button:hover {
+  background-color: var(--menu-hover-color) !important;
+}
+
+/* Increase the width of the editor content */
+.bn-container .slate-BlockNoteEditor {
+  max-width: 900px !important;
+  margin: 0 auto;
+}
+
+/* Light theme variables */
+.bg-gray-100 {
+  --border-color: #cccccc;
+  --placeholder-color: #888888;
+  --menu-hover-color: #e0e0e0;
+}
+
+.liveBlockloader {
+  width: 48px;
+  height: 48px;
+  margin: auto;
+  position: relative;
+}
+
+.liveBlockloader:before {
+  content: '';
+  width: 48px;
+  height: 5px;
+  background: #f0808050;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  border-radius: 50%;
+  animation: shadow324 0.5s linear infinite;
+}
+
+.liveBlockloader:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #f08080;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  animation: jump7456 0.5s linear infinite;
+}
+
+@keyframes jump7456 {
+  15% {
+    border-bottom-right-radius: 3px;
+  }
+
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+
+  50% {
+    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+@keyframes shadow324 {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+/* editor-custom.css */
+
+/* Dark Mode */
+.bg-dark {
+  background-color: #1e1e1e; /* Deep charcoal background */
+}
+
+.text-light {
+  color: #f0f0f0; /* Light gray text */
+}
+
+.border-dark {
+  border-color: #2a2a2a; /* Slightly lighter border for dark mode */
+}
+
+.button-dark {
+  background-color: #333333; /* Darker button background */
+  color: #f0f0f0; /* Light button text */
+}
+
+.button-dark:hover {
+  background-color: #444444; /* Slightly lighter on hover */
+}
