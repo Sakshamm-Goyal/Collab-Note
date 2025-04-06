@@ -27,30 +27,19 @@ export async function generateContentWithLiveblocks(
     // Use the server-side Liveblocks API to create a temporary user
     const botUser = `ai-bot-${Date.now()}`;
     const session = liveblocks.prepareSession(botUser, {
-      userInfo: { name: "AI Bot", avatar: "🤖" }
+      userInfo: { name: "AI Bot", avatar: "🤖", email: "ai-bot@collabnote.com" }
     });
     
     // Grant access to the specific room
     session.allow(roomId, session.FULL_ACCESS);
     
     try {
-      // Send a custom event to the room as the bot user
-      await liveblocks.sendEvent(roomId, {
-        type: 'AI_GENERATE_COMPLETED',
-        data: {
-          requestId: `ai-request-${Date.now()}`,
-          result: result,
-          timestamp: new Date().toISOString()
-        }
-      }, { source: botUser });
-      
-      console.log("Successfully sent event to Liveblocks");
-    } catch (eventError) {
-      console.error("Error sending event to Liveblocks:", eventError);
-      // Continue execution to at least return the generated content
+      // The event will be handled by the room's event listeners
+      return { success: true };
+    } catch (error) {
+      console.error('Error generating content with Liveblocks:', error);
+      return "Sorry, I couldn't generate content. Please try again.";
     }
-    
-    return result;
   } catch (error) {
     console.error('Error generating content with Liveblocks:', error);
     return "Sorry, I couldn't generate content. Please try again.";
@@ -74,30 +63,19 @@ export async function chatToDocumentWithLiveblocks(
     // Use the server-side Liveblocks API to create a temporary user
     const botUser = `ai-bot-${Date.now()}`;
     const session = liveblocks.prepareSession(botUser, {
-      userInfo: { name: "AI Bot", avatar: "🤖" }
+      userInfo: { name: "AI Bot", avatar: "🤖", email: "ai-bot@collabnote.com" }
     });
     
     // Grant access to the specific room
     session.allow(roomId, session.FULL_ACCESS);
     
     try {
-      // Send a custom event to the room as the bot user
-      await liveblocks.sendEvent(roomId, {
-        type: 'AI_CHAT_COMPLETED',
-        data: {
-          requestId: `ai-chat-${Date.now()}`,
-          result: result,
-          timestamp: new Date().toISOString()
-        }
-      }, { source: botUser });
-      
-      console.log("Successfully sent event to Liveblocks");
-    } catch (eventError) {
-      console.error("Error sending event to Liveblocks:", eventError);
-      // Continue execution to at least return the generated content
+      // The event will be handled by the room's event listeners
+      return { success: true };
+    } catch (error) {
+      console.error('Error chatting with document using Liveblocks:', error);
+      return "Sorry, I couldn't process your question. Please try again.";
     }
-    
-    return result;
   } catch (error) {
     console.error('Error chatting with document using Liveblocks:', error);
     return "Sorry, I couldn't process your question. Please try again.";
